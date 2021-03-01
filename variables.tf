@@ -1,7 +1,7 @@
 variable "name" {
   type = string
 }
-variable "count" {
+variable "quantity" {
   type    = number
   default = 1
 }

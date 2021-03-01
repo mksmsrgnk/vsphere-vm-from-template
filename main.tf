@@ -26,7 +26,7 @@ data "vsphere_virtual_machine" "template" {
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 resource "vsphere_virtual_machine" "vm" {
-  count            = var.count
+  count            = var.quantity
   name             = "${var.name}-${count.index}"
   annotation       = var.annotation
   folder           = var.folder
