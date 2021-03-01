@@ -26,7 +26,8 @@ data "vsphere_virtual_machine" "template" {
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 resource "vsphere_virtual_machine" "vm" {
-  name             = var.name
+  count            = var.count
+  name             = "${var.name}-${count.index}"
   annotation       = var.annotation
   folder           = var.folder
   num_cpus         = var.num_cpus
@@ -49,12 +50,12 @@ resource "vsphere_virtual_machine" "vm" {
     template_uuid = data.vsphere_virtual_machine.template.id
     customize {
       linux_options {
-        host_name = var.host_name
+        host_name = "${var.name}-${count.index}"
         domain    = var.domain
         time_zone = var.time_zone
       }
       network_interface {
-        ipv4_address = var.ipv4_address
+        ipv4_address = var.ipv4_address[count.index]
         ipv4_netmask = var.ipv4_netmask
       }
       ipv4_gateway    = var.ipv4_gateway

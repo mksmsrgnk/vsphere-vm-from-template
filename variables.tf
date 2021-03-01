@@ -1,6 +1,10 @@
 variable "name" {
   type = string
 }
+variable "count" {
+  type    = number
+  default = 1
+}
 variable "annotation" {
   type = string
 }
@@ -11,9 +15,6 @@ variable "memory" {
   type = number
 }
 variable "folder" {
-  type = string
-}
-variable "host_name" {
   type = string
 }
 variable "domain" {
@@ -38,14 +39,14 @@ variable "template_name" {
   type = string
 }
 variable "ipv4_address" {
-  type = string
+  type = list(string)
 }
 variable "ipv4_netmask" {
-  type    = number
+  type = number
 }
 variable "ipv4_gateway" {
-  type    = string
+  type = string
 }
 variable "dns_server_list" {
-  type    = list(string)
+  type = list(string)
 }
