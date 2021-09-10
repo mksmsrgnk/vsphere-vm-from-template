@@ -1,6 +1,9 @@
 # vsphere-vm-from-template
+
 terraform module to create vsphere vm from template easily
-# usage example:
+
+## usage example
+
 ```hcl
 provider "vsphere" {
   user                 = var.vsphere_user
